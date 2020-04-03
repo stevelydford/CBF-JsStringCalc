@@ -31,4 +31,22 @@ describe('String Calculator Must', () => {
 
         assert.strictEqual(result, 6);
     })
+
+    it('Allows custom separators', () => {
+        const result = stringCalculator('//;\n1;2');
+
+        assert.strictEqual(result, 3);
+    })
+
+    it('Allows arbitrtary custom separators', () => {
+        const result = stringCalculator('//*\n1*2');
+
+        assert.strictEqual(result, 3);
+    })
+
+    it('does not allow negative numbers', () => {
+        const result = stringCalculator('1,-2,-3');
+
+        assert.strictEqual(result, 'negatives not allowed: -2 -3'); 
+    })
 })
